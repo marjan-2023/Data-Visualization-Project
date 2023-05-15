@@ -1,1 +1,2 @@
 # Data-Visualization-Project
+In this project, my focus was on two hydroxylammonium structures as solar cell panels. My objective was to find the best structures. I utilized Quantum Espresso software to generate my optical data and VESTA (Visualisation for Electronic Structural Analysis) software to plot chemical structures in 2D and 3D. Additionally, I employed several packages including ggplot2, ggspectra, animation, scales, and photobiology. I particularly appreciated the Scales package in this project as it perfectly complemented my optical data.
