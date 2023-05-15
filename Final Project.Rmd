@@ -1,0 +1,133 @@
+---
+title: "Final Project-HAPbCl3"
+author: "Marjan"
+date: "2023-04-22"
+output: html_document
+---
+```{r}
+# loading libraries 
+library(ggplot2)
+library(ggspectra)
+library(animation)
+library(scales)
+library(photobiology)
+
+```
+
+
+
+
+```{r}
+library(ggspectra)
+autoplot(sun.spct)
+```
+
+
+
+
+
+
+
+```{r}
+
+library(photobiology)
+library(ggspectra)
+
+spectrum_data <- read.csv("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/my_modified_file.csv")
+
+spectrum_data
+
+ggplot(spectrum_data, aes(x= wavelength, y= V3))+
+  geom_line()+stat_color() + scale_color_identity()
+ggplot(spectrum_data, aes(x= wavelength, y= V5))+
+  geom_line()+stat_color() + scale_color_identity()
+
+```
+# these grahs related to Absorption and Reflection of HAPbCl3 at (0,8)
+```{r}
+library(photobiology)
+library(ggspectra)
+library(scales)
+
+spectrum_data1 <- read.csv("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/HAPbCl3-Ab-Ref.csv")
+
+spectrum_data1
+ggplot(spectrum_data1, aes(x= Wavelenght, y= X8))+
+  geom_line()+
+  labs(title = "HAPbCl3 at 8%",y = "Reflection", x = "wavelength (nm)")+
+  stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+library(ggplot2)
+
+ggplot(spectrum_data1, aes(x = Wavelenght, y = X8)) +
+  geom_line() +
+  labs(title = "HAPbCl3 at 8%", y = "Reflection", x = "wavelength (nm)") +
+  stat_color() +
+  scale_color_identity() +
+  theme(text = element_text(size = 20))  # Set the font size to 12
+
+  
+spectrum_data1$`Electromagnetic spectrum` <- rescale(spectrum_data1$X8, c(400, 700))
+ggplot(spectrum_data1, aes(x= Wavelenght, y= X0))+
+  labs(y = "Absorbption",x = "wavelength (nm)")+
+  geom_line()+stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+ggplot(spectrum_data1, aes(x= Wavelenght, y= X.8))+
+  labs(title = "HAPbCl3 at 8%",y = "Absorption", x = "wavelength (nm)")+
+  geom_line()+stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+```
+
+# these grahs related to Absorption and Reflection of HAPbI3 at (0,8)
+
+```{r}
+library(photobiology)
+library(ggspectra)
+
+spectrum_data2 <- read.csv("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/HAPbI3-Abs-Ref.csv")
+
+spectrum_data2
+ggplot(spectrum_data2, aes(x= wavelength, y= X.8))+
+  geom_line()+
+  labs(title = "HAPbI3 at 8%",y = "Reflection", x = "wavelength (nm)")+
+  stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+ggplot(spectrum_data2, aes(x= wavelength, y= X0))+
+  labs(y = "Absorbption",x = "wavelength (nm)")+
+  geom_line()+stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+ggplot(spectrum_data2, aes(x= wavelength, y= X.8.1))+
+  labs(title = "HAPbI3 at 8%",y = "Absorption", x = "wavelength (nm)")+
+  geom_line()+stat_color() + scale_color_identity()+
+  theme(text = element_text(size = 20))
+```
+
+
+
+
+#####Animation
+```{r}
+library(gganimate)
+library(magick)
+img1 <- image_read("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/Br-0.png")
+img2 <- image_read("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/Br-8.png")
+animation <- image_animate(c(img1, img2), fps = 1)
+image_write(animation, "structure_animation.gif")
+
+
+
+```
+
+
+```{r}
+library(gganimate)
+library(magick)
+img1 <- image_read("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/Cl0.png")
+img2 <- image_read("C:/Users/bazian/OneDrive - Chapman University/Courses/710-Data Visualization/Final Project/Cl8.png")
+animation <- image_animate(c(img1, img2), fps = 1)
+image_write(animation, "structure_animation.gif")
+
+
+```
+
+
